@@ -4,7 +4,7 @@ let cenario;
 
 // variaveis do personagem:
 let imagemPersonagem;
-let pAltura = 135
+let personagem
 
 //variaveis dos sons:
 let gameSong;
@@ -21,6 +21,8 @@ function preload(){
 function setup() {
   createCanvas(windowWidth, windowHeight); // mudar o tamanho da tela
   cenario = new Cenario(imagemCenario, 3);
+  personagem = new Personagem(imagemPersonagem);
+  frameRate(40);
   gamesong.loop();
 }
 
@@ -28,5 +30,6 @@ function setup() {
 function draw() {
   cenario.exibe()
   cenario.move()
-  image(imagemPersonagem, 0, height - pAltura, 135, pAltura, 0, 0, 220, 270); // define como a imagem deve aparecer na tela
+
+  personagem.exibe();
 }
