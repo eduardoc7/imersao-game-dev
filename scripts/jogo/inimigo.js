@@ -2,7 +2,7 @@ class Inimigo extends Animacao {
     constructor(matriz, imagem, x, pLargura, pAltura, tamanhoX, tamanhoY){
         super(matriz, imagem, x, pLargura, pAltura, tamanhoX, tamanhoY)
         
-        this.velocidade = 5
+        this.velocidade = 10
     }
     
     // método para mover a gotinha,

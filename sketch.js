@@ -1,10 +1,11 @@
-// variaveis do cenario:
+// variáveis do cenario:
 let imagemCenario;
 let cenario;
 
-// variaveis do personagem:
+// variáveis do personagem:
 let imagemPersonagem;
 let personagem;
+
 // matriz para navegar dentro do nosso mapa de imagens
 // a primeira coluna dessa matriz seria o eixo x
 // e a segunda coluna seria o eixo y
@@ -28,10 +29,11 @@ const matrizPersonagem = [
   [660, 810],
 ];
 
-//variaveis dos sons:
+//variáveis dos sons:
 let gameSong;
+let jumpSong;
 
-// matriz inimigo:
+// variáveis do inimigo:
 let imagemInimigo;
 let inimigo;
 const matrizInimigo = [
@@ -65,31 +67,51 @@ const matrizInimigo = [
   [315, 609],
 ]
 
-// função para carregar arquivos na memória, roda antes da função setup
 function preload(){
+  // função para carregar arquivos na memória, roda antes da função setup
+
   imagemCenario = loadImage('imagens/cenario/floresta.png');
   imagemPersonagem = loadImage('imagens/personagem/correndo.png')
   imagemInimigo = loadImage('imagens/inimigos/gotinha.png')
   gamesong = loadSound('sons/trilha_jogo.mp3')
+  jumpSong = loadSound('sons/somPulo.mp3')
 }
 
-// função utilizada pra inicialização, rodando apenas uma vez
 function setup() {
+  // função utilizada pra inicialização, rodando apenas uma vez
+
   createCanvas(windowWidth, windowHeight); // mudar o tamanho da tela, deixando responsivo
   cenario = new Cenario(imagemCenario, 3);
   personagem = new Personagem(matrizPersonagem, imagemPersonagem, 0, 110, 135, 220, 270);
   inimigo = new Inimigo(matrizInimigo, imagemInimigo, width - 52, 52, 52, 104, 104)
-  frameRate(40);
-  gamesong.loop();
+  frameRate(40); // velocidade que o frame será rodado, ou seja, a velocidade da tela
+  gamesong.loop(); // deixar o som em looping
 }
 
-// função utilizada para animações, repetindo várias vezes
+function keyPressed(){
+  // função para ficar ouvindo um evento, 
+  // quando pressionada, chama o método
+  if(key === 'ArrowUp'){
+    personagem.pula();
+  // som do pulo a cada tecla:
+  jumpSong.play()
+  }
+}
+
 function draw() {
+  // função utilizada para animações, repetindo várias vezes
+
   cenario.exibe();
   cenario.move();
+
+  personagem.aplicaGravidade()
+  personagem.exibe();
 
   inimigo.move();
   inimigo.exibe();
 
-  personagem.exibe();
+  if(personagem.colidindo(inimigo)){
+    console.log('colidiu')
+    noLoop();
+  }
 }
