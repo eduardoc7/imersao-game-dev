@@ -1,12 +1,23 @@
 // variáveis do cenario:
 let imagemCenario;
 let cenario;
+let imagemGameover;
 
 // variáveis do personagem:
 let imagemPersonagem;
 let personagem;
+let pontuacao;
+//variáveis dos sons:
+let gameSong;
+let jumpSong;
 
-// matriz para navegar dentro do nosso mapa de imagens
+// variáveis dos inimigos:
+let imagemInimigo;
+let imagemTroll;
+let imagemVoador;
+
+
+// matrizes para navegar dentro do nosso mapa de imagens
 // a primeira coluna dessa matriz seria o eixo x
 // e a segunda coluna seria o eixo y
 // com a variavel frameAtual nós podemos percorrer dentro desse array:
@@ -29,17 +40,6 @@ const matrizPersonagem = [
   [660, 810],
 ];
 
-//variáveis dos sons:
-let gameSong;
-let jumpSong;
-
-// variáveis dos inimigos:
-let imagemInimigo;
-let inimigo;
-let imagemTroll;
-let inimigoTroll;
-let imagemVoador;
-let inimigoVoador;
 const matrizInimigo = [
   [0, 0],
   [105, 0],
@@ -69,7 +69,7 @@ const matrizInimigo = [
   [105, 609],
   [210, 609],
   [315, 609],
-]
+];
 const matrizTroll = [
   [0,0],
   [400,0],
@@ -99,7 +99,7 @@ const matrizTroll = [
   [0, 2000],
   [400, 2000],
   [800, 2000],
-]
+];
 const matrizVoador = [
   [0,0],
   [200, 0],
@@ -117,12 +117,14 @@ const matrizVoador = [
   [200, 600],
   [400, 600],
   [0, 750],
-]
+];
+const inimigos = []
 
 function preload(){
   // função para carregar arquivos na memória, roda antes da função setup
 
   imagemCenario = loadImage('imagens/cenario/floresta.png');
+  imagemGameover = loadImage('imagens/assets/game-over.png');
   imagemPersonagem = loadImage('imagens/personagem/correndo.png')
   imagemInimigo = loadImage('imagens/inimigos/gotinha.png')
   imagemTroll = loadImage('imagens/inimigos/troll.png')
@@ -135,11 +137,18 @@ function setup() {
   // função utilizada pra inicialização, rodando apenas uma vez
 
   createCanvas(windowWidth, windowHeight); // mudar o tamanho da tela, deixando responsivo
-  cenario = new Cenario(imagemCenario, 4);
+  cenario = new Cenario(imagemCenario, 3);
   personagem = new Personagem(matrizPersonagem, imagemPersonagem, 0, 30, 110, 135, 220, 270);
-  inimigo = new Inimigo(matrizInimigo, imagemInimigo, width - 52, 30, 52, 52, 104, 104, 10, 200)
-  inimigoTroll = new Inimigo(matrizTroll, imagemTroll, width, 0, 200, 200, 400, 400, 10, 2500)
-  inimigoVoador = new Inimigo(matrizVoador, imagemVoador, width - 52, 200, 100, 75, 200, 150, 10, 1500)
+  
+  pontuacao = new Pontuacao()
+
+  const inimigo = new Inimigo(matrizInimigo, imagemInimigo, width - 52, 30, 52, 52, 104, 104, 10, 200)
+  const inimigoTroll = new Inimigo(matrizTroll, imagemTroll, width, 0, 200, 200, 400, 400, 10, 2500)
+  const inimigoVoador = new Inimigo(matrizVoador, imagemVoador, width - 52, 200, 100, 75, 200, 150, 10, 1500)
+  inimigos.push(inimigo)
+  inimigos.push(inimigoTroll)
+  inimigos.push(inimigoVoador)
+  
   frameRate(40); // velocidade que o frame será rodado, ou seja, a velocidade da tela
   gamesong.loop(); // deixar o som em looping
 }
@@ -163,18 +172,16 @@ function draw() {
   personagem.aplicaGravidade()
   personagem.exibe();
 
-  inimigo.move();
-  inimigo.exibe();
+  inimigos.forEach(inimigo => {
+    inimigo.exibe();
+    inimigo.move();
 
-  inimigoTroll.exibe();
-  inimigoTroll.move();
+    if(personagem.colidindo(inimigo)){
+      image(imagemGameover, width/2 - 200, height/2.5)
+      noLoop();
+    }
+  });
 
-  inimigoVoador.exibe();
-  inimigoVoador.move();
-
-
-  if(personagem.colidindo(inimigo)){
-    console.log('colidiu')
-    // noLoop();
-  }
+  pontuacao.exibe()
+  pontuacao.addPonto()
 }

@@ -6,12 +6,17 @@ class Personagem extends Animacao{
         this.yInicial = height - pAltura - variacaoY;
         this.y = this.yInicial;
         this.velpulo = 0;
-        this.gravidade = 3;
+        this.gravidade = 5;
+        this.alturaPulo = -50
+        this.pulos = 0
     }
 
     pula(){
         // método para fazer o eixo y movimento -50, isto é, para cima:
-        this.velpulo = -30;
+        if(this.pulos < 2){
+            this.velpulo = this.alturaPulo;
+            this.pulos++
+        }
     }
 
     aplicaGravidade(){
@@ -24,6 +29,7 @@ class Personagem extends Animacao{
         // verificação para voltar ao eixo y original 
         if(this.y > this.yInicial){
             this.y = this.yInicial;
+            this.pulos = 0;
         }
     }
 
@@ -38,5 +44,6 @@ class Personagem extends Animacao{
             inimigo.pLargura * precisao, inimigo.pAltura * precisao
             );
         return colisao;
+        
     }
 }
