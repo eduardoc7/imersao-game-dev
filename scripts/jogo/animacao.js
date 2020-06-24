@@ -3,13 +3,14 @@ class Animacao {
     // definindo: como é exibido na tela, em que posição e tamanho
     // e definindo: como ele é animado, percorrendo com o frame no mapa da imagem
 
-    constructor(matriz, imagem, x, pLargura, pAltura, tamanhoX, tamanhoY){
+    constructor(matriz, imagem, x, variacaoY, pLargura, pAltura, tamanhoX, tamanhoY){
         this.matriz = matriz;
         this.imagem = imagem;
         this.pLargura = pLargura; 
         this.pAltura = pAltura;
         this.x = x;
-        this.y = height - this.pAltura;
+        this.variacaoY = variacaoY;
+        this.y = height - this.pAltura - this.variacaoY;
         this.tamanhoX = tamanhoX;
         this.tamanhoY = tamanhoY;
 
@@ -32,6 +33,6 @@ class Animacao {
 
         if(this.frameAtual >= this.matriz.length - 1){
             this.frameAtual = 0;
-        }7
+        }
     }
 }

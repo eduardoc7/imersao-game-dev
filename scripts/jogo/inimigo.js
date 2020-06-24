@@ -1,8 +1,10 @@
 class Inimigo extends Animacao {
-    constructor(matriz, imagem, x, pLargura, pAltura, tamanhoX, tamanhoY){
-        super(matriz, imagem, x, pLargura, pAltura, tamanhoX, tamanhoY)
+    constructor(matriz, imagem, x, variacaoY, pLargura, pAltura, tamanhoX, tamanhoY, velocidade, delay){
+        super(matriz, imagem, x, variacaoY, pLargura, pAltura, tamanhoX, tamanhoY)
         
-        this.velocidade = 10
+        this.velocidade = velocidade;
+        this.delay = delay;
+        this.x = width - this.delay;
     }
     
     // método para mover a gotinha,
@@ -13,7 +15,7 @@ class Inimigo extends Animacao {
 
         // condição para quando a gotinha atravessar o lado esquerdo da tela
         // fazendo ela voltar para a direita resetando o valor de x
-        if(this.x < -this.pLargura){
+        if(this.x < -this.pLargura - this.delay){
             this.x = width
         }
     }
