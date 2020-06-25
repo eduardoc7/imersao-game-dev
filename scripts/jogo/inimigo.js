@@ -7,7 +7,7 @@ class Inimigo extends Animacao {
         this.x = width - this.delay;
     }
     
-    // método para mover a gotinha,
+    // método para mover a ginimigoAtualotinha,
     // definindo uma velocidade que iremos tirar do eixo x
     // subtraindo do eixo x consequentemente o elemento irá para esquerda
     move(){
