@@ -6,9 +6,9 @@ class Personagem extends Animacao{
         this.yInicial = height - pAltura - variacaoY;
         this.y = this.yInicial;
         this.velpulo = 0;
-        this.gravidade = 5;
-        this.alturaPulo = -50
-        this.pulos = 0
+        this.gravidade = 3.5;
+        this.alturaPulo = -35;
+        this.pulos = 0;
     }
 
     pula(){

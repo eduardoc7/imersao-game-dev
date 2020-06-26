@@ -4,6 +4,14 @@ function setup() {
   frameRate(40); // velocidade que o frame será rodado, ou seja, a velocidade da tela
   jogo = new Jogo();
   jogo.setup();
+  telaInicial = new TelaInicial();
+
+  cenas = {
+    jogo,
+    telaInicial
+  };
+
+  botaoGerenciador = new Botao('Iniciar', width / 2, height / 2);
 }
 
 function keyPressed(){
@@ -14,5 +22,5 @@ function keyPressed(){
 
 function draw() {
   // função utilizada para animações, repetindo várias vezes  
-  jogo.draw()
+  cenas[cenaAtual].draw()
 }

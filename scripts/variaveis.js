@@ -1,6 +1,9 @@
 // variáveis do cenario:
 let imagemCenario;
 let imagemGameover;
+let imagemInicial;
+let botaoGerenciador;
+let fontTelaInicial;
 
 // variáveis do personagem:
 let imagemPersonagem;
@@ -17,6 +20,9 @@ let imagemVoador;
 
 // variaveis das cenas
 let jogo;
+let telaInicial;
+let cenaAtual = 'telaInicial';
+let cenas;
 
 // matrizes para navegar dentro do nosso mapa de imagens
 // a primeira coluna dessa matriz seria o eixo x

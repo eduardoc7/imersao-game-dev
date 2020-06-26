@@ -9,7 +9,7 @@ class Jogo {
         
     }
     setup(){
-        this.cenario = new Cenario(imagemCenario, 3);
+        this.cenario = new Cenario(imagemCenario, 5);
         this.personagem = new Personagem(matrizPersonagem, imagemPersonagem, 0, 50, 110, 135, 220, 270);
       
         const inimigo = new Inimigo(matrizInimigo, imagemInimigo, width - 52, 50, 52, 52, 104, 104, 10, 100)
