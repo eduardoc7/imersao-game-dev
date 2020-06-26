@@ -4,6 +4,8 @@ let imagemGameover;
 let imagemInicial;
 let botaoGerenciador;
 let fontTelaInicial;
+let imagemVida;
+let vida;
 
 // variáveis do personagem:
 let imagemPersonagem;

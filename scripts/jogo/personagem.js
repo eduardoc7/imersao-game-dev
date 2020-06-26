@@ -9,6 +9,8 @@ class Personagem extends Animacao{
         this.gravidade = 3.5;
         this.alturaPulo = -35;
         this.pulos = 0;
+
+        this.invencivel = false;
     }
 
     pula(){
@@ -33,7 +35,18 @@ class Personagem extends Animacao{
         }
     }
 
+    tornaInvencivel(){
+        this.invencivel = true;
+
+        setTimeout(() => {
+            this.invencivel = false;
+        }, 1000)
+    }
+
     colidindo(inimigo){
+        if(this.invencivel){
+            return false;
+        }
         const precisao = .7
 
         // usando a biblioteca pronta de colisão do ps5,
@@ -44,6 +57,5 @@ class Personagem extends Animacao{
             inimigo.pLargura * precisao, inimigo.pAltura * precisao
             );
         return colisao;
-        
     }
 }
