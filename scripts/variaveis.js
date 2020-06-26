@@ -6,6 +6,7 @@ let botaoGerenciador;
 let fontTelaInicial;
 let imagemVida;
 let vida;
+let fita;
 
 // variáveis do personagem:
 let imagemPersonagem;

@@ -14,4 +14,7 @@ function preload(){
     
     gamesong = loadSound('sons/trilha_jogo.mp3')
     jumpSong = loadSound('sons/somPulo.mp3')
+
+    // arquivo json da vida e do mapa dos inimigos:
+    fita = loadJSON('fita/fita.json')
   }

@@ -7,17 +7,13 @@ class Jogo {
         this.inimigos = [];
         this.indice = 0;
 
-        this.mapa = [
-            { inimigo: 0, velocidade: 10 },
-            { inimigo: 1, velocidade: 30 },
-            { inimigo: 1, velocidade: 15 },
-            { inimigo: 2, velocidade: 40 },
-        ];
+        this.mapa = fita.mapa;
+
     }   
     setup(){
         this.cenario = new Cenario(imagemCenario, 5);
         this.personagem = new Personagem(matrizPersonagem, imagemPersonagem, 0, 50, 110, 135, 220, 270);
-        vida = new Vida(3, 3)
+        vida = new Vida(fita.configuracoes.vidaMaxima, fita.configuracoes.vidaInicial)
         
         const inimigo = new Inimigo(matrizInimigo, imagemInimigo, width - 52, 50, 52, 52, 104, 104, 10)
         const inimigoTroll = new Inimigo(matrizTroll, imagemTroll, width, 25, 200, 200, 400, 400, 10)
