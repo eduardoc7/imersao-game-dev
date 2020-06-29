@@ -28,3 +28,16 @@
 ***
 ## Link da página do jogo
 * https://eduardocordeiro7.github.io/imersao-game-dev/
+***
+## To Do Next
+- [ ] Ganhar vida durante o jogo
+- [ ] Mudar os sprites dos inimigos, pra algo que combine mais com o cenário
+- [ ] Melhorar a colisão com os inimigos
+- [ ] Adicionar um botão de instruções ou sobre na tela inicial
+- [ ] Musica da tela inicial
+- [ ] Background da tela inicial
+- [ ] Fazer algo para retornar a tela inicial ou jogar novamente 
+- [ ] Mudar CSS do botão iniciar
+- [ ] Efeito sonoro para quando perder vida
+- [ ] Fazer o personagem se mover para frente e para trás 
+- [ ] Efeito paralaxe
