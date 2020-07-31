@@ -27,7 +27,7 @@
 2. P5JS
 ***
 ## Link da página do jogo
-* https://eduardocordeiro7.github.io/imersao-game-dev/
+* https://eduardoc7.github.io/imersao-game-dev/
 ***
 ## To Do Next
 - [ ] Ganhar vida durante o jogo
